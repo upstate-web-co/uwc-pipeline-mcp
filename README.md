@@ -79,14 +79,16 @@ echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":
 
 ## Scope & non-goals
 
-This v0.1.0 ships a deliberately narrow surface area:
+This package ships a deliberately narrow surface area:
 
 - **Read-only.** No write tools; no mutation of skill content.
 - **No network calls.** Reads local filesystem only.
-- **No pipeline-specific tools.** The original roadmap mentioned `generate_phase_prompt` and `run_governance_agent` — those require UWC-specific schema and endpoints that would bind this package to a private stack. Deferred indefinitely.
+- **No pipeline-specific tools.** `generate_phase_prompt`, `run_governance_agent`, `run_meta_retro_prompt`, `compile_knowledge_bundle` are **not** shipped and **not on the roadmap**. Each requires UWC-specific schema, endpoints, or directory layout that would bind this package to a private stack. They fail our leakage test. Dropped, not deferred.
 - **No authentication.** stdio is the only transport; auth is the MCP client's responsibility.
 
-If you need pipeline tooling beyond skill browsing, the source of truth for those patterns is published as skill content in [`@upstate-web/uwc-skills`](https://github.com/upstate-web-co/uwc-skills-npm) — load the relevant skill with `get_skill` and apply it yourself.
+If you need pipeline tooling beyond skill browsing, the source of truth for those patterns is published as skill *content* in [`@upstate-web/uwc-skills`](https://github.com/upstate-web-co/uwc-skills-npm) — load the relevant skill with `get_skill` and apply it yourself.
+
+**New tools enter this server only if they pass the same bar as new skills:** portability (works without UWC infrastructure), leakage-free (no private schema, keys, or endpoints), and usefulness (value to a non-UWC developer). `list_skills` + `get_skill` are both read-only filesystem queries against a configurable directory — the canonical shape we'll stick to.
 
 ## Build from source
 
