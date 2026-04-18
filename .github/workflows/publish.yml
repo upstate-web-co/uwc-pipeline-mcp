@@ -1,0 +1,46 @@
+name: publish
+
+# Manual-dispatch-only for now — the repo is private during v0.1.x. Flip
+# `on: release` (and add NPM_TOKEN) once the repo goes public and we're
+# ready for real npm publishes.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run `npm publish --dry-run` only (no actual publish)"
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: npm ci --include=dev
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify package contents
+        run: npm pack --dry-run
+
+      - name: Publish (dry run)
+        if: ${{ inputs.dry_run == true }}
+        run: npm publish --dry-run --access public
+
+      - name: Publish
+        if: ${{ inputs.dry_run == false }}
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

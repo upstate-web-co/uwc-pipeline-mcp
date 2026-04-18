@@ -1,0 +1,55 @@
+{
+  "name": "@upstate-web/uwc-pipeline-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that exposes a directory of Claude Agent Skills (Anthropic spec) as callable tools — list_skills and get_skill. Portable; works against any SKILL.md-compliant directory, including @upstate-web/uwc-skills.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "anthropic",
+    "agent-skills",
+    "skills"
+  ],
+  "homepage": "https://github.com/upstate-web-co/uwc-pipeline-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/upstate-web-co/uwc-pipeline-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upstate-web-co/uwc-pipeline-mcp.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Upstate Web Co.",
+    "url": "https://upstate-web.com"
+  },
+  "type": "module",
+  "bin": {
+    "uwc-pipeline-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,11 @@
+.github
+.gitignore
+.env
+.env.*
+node_modules
+src
+tsconfig.json
+coverage
+*.log
+*.tgz
+.DS_Store
