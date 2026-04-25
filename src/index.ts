@@ -21,7 +21,7 @@ type ParsedFrontmatter = Record<string, string>;
 
 const SKILLS_DIR =
   process.env.UWC_SKILLS_DIR ??
-  resolve(process.cwd(), "node_modules/@upstate-web/uwc-skills/skills");
+  resolve(process.cwd(), "node_modules/@upstatewebco/uwc-skills/skills");
 
 async function directoryExists(path: string): Promise<boolean> {
   try {
@@ -135,7 +135,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         content: [
           {
             type: "text",
-            text: `No skills found under ${SKILLS_DIR}. Set UWC_SKILLS_DIR to a directory of SKILL.md-compliant subdirectories, or install @upstate-web/uwc-skills in the working directory.`,
+            text: `No skills found under ${SKILLS_DIR}. Set UWC_SKILLS_DIR to a directory of SKILL.md-compliant subdirectories, or install @upstatewebco/uwc-skills in the working directory.`,
           },
         ],
       };

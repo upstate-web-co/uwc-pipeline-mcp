@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `@upstate-web/uwc-pipeline-mcp` are documented here.
+All notable changes to `@upstatewebco/uwc-pipeline-mcp` are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - MCP stdio server exposing two tools:
   - `list_skills` — enumerates Agent Skills in the configured directory
   - `get_skill(slug)` — returns the full `SKILL.md` content for a given skill
-- `UWC_SKILLS_DIR` env var for pointing the server at any Agent Skills-compliant directory (defaults to `node_modules/@upstate-web/uwc-skills/skills`)
+- `UWC_SKILLS_DIR` env var for pointing the server at any Agent Skills-compliant directory (defaults to `node_modules/@upstatewebco/uwc-skills/skills`)
 - `bin` entry `uwc-pipeline-mcp` so the server is invokable via `npx`
 - Built-in slug validation (rejects path traversal and non-alphanumeric slugs)
 - TypeScript 5, Node ≥18, ESM
