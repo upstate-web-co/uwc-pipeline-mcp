@@ -1,7 +1,7 @@
 {
-  "name": "@upstatewebco/uwc-pipeline-mcp",
+  "name": "@upstate-web/uwc-pipeline-mcp",
   "version": "0.1.0",
-  "description": "MCP server that exposes a directory of Claude Agent Skills (Anthropic spec) as callable tools — list_skills and get_skill. Portable; works against any SKILL.md-compliant directory, including @upstatewebco/uwc-skills.",
+  "description": "MCP server that exposes a directory of Claude Agent Skills (Anthropic spec) as callable tools — list_skills and get_skill. Portable; works against any SKILL.md-compliant directory, including @upstate-web/uwc-skills.",
   "keywords": [
     "mcp",
     "model-context-protocol",
